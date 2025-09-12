@@ -1,202 +1,301 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Islam Guide</title>
-  <link rel="icon" href="download-compresskaru.com (1).png">
+  <title>Islamic Knowledge Hub</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <style>
+    /* Global Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
     body {
-      font-family: "Cairo", Arial, sans-serif;
-      line-height: 1.8;
-      background-color: #f9fafb;
-      color: #333;
-      margin: 0;
-      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #f8f3e6;
+      color: #222;
+      line-height: 1.6;
     }
-
-    header {
-      background: linear-gradient(90deg, #ec0606, #a40000);
-      color: #fff;
-      text-align: center;
-      padding: 30px 15px;
-      border-bottom: 4px solid #820000;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-
-    h2,
-    h3 {
-      color: #444;
-      margin: 20px 0;
-      text-align: center;
-    }
-
-    main {
-      max-width: 1100px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    section {
-      margin-bottom: 40px;
-    }
-
-    ul,
-    ol {
-      list-style: none;
-      padding: 0;
-    }
-
-    li {
-      background: #fff;
-      padding: 15px;
-      margin-bottom: 12px;
-      border-radius: 12px;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    li:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
-    }
-
     a {
-      color: #0077cc;
       text-decoration: none;
-      font-weight: bold;
+      color: inherit;
+      transition: 0.3s;
     }
 
-    a:hover {
-      text-decoration: underline;
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: #1d6a4f;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 25px;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
     }
-
-    img {
-      display: block;
-      margin: 12px auto;
-      max-width: 120px;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    header h3 {
+      font-size: 22px;
+      font-weight: 700;
     }
-
-    hr {
-      border: 0;
-      border-top: 1px solid #ddd;
-      margin: 30px 0;
-    }
-
-    /* Responsive grid */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    .navbar-all {
+      display: flex;
       gap: 20px;
     }
+    .navbar-all a {
+      font-size: 16px;
+      color: #fff;
+      position: relative;
+    }
+    .navbar-all a:hover {
+      color: #f1c40f;
+    }
+    .navbar-all a::after {
+      content: "";
+      display: block;
+      height: 2px;
+      width: 0%;
+      background: #f1c40f;
+      transition: 0.3s;
+      margin: auto;
+    }
+    .navbar-all a:hover::after {
+      width: 100%;
+    }
 
-    footer {
+    /* Hero Section */
+    main {
       text-align: center;
+      padding: 120px 20px 60px;
+    }
+    main h1 {
+      font-size: 3rem;
+      color: #1d6a4f;
+      margin-bottom: 20px;
+      animation: fadeInUp 1s ease-out;
+    }
+    main h2 {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      color: #444;
+    }
+    .btn {
+      display: inline-block;
+      background: #1d6a4f;
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-size: 18px;
+      transition: all 0.3s;
+    }
+    .btn:hover {
+      background: #145a3e;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    /* Categories */
+    .learn {
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .learn h1 {
+      font-size: 2.2rem;
+      color: #1d6a4f;
+      margin-bottom: 40px;
+    }
+    .boxes {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+    .box {
+      background: #fff;
+      border-radius: 12px;
+      width: 300px;
       padding: 20px;
-      background: #111;
-      color: #eee;
-      font-size: 0.9rem;
-      margin-top: 40px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+    .box img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .box h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #1d6a4f;
+    }
+    .box p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 15px;
+    }
+    .box a {
+      color: #d4352c;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Footer */
+    footer {
+      background: #1d6a4f;
+      color: #fff;
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+    footer h2 {
+      margin-bottom: 15px;
+      font-size: 18px;
+      color: #f1c40f;
+    }
+    footer a {
+      color: #fff;
+      font-size: 14px;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+    footer a:hover {
+      color: #f1c40f;
+    }
+    .icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+    .icons a {
+      font-size: 22px;
+      color: #fff;
+    }
+    .icons a:hover {
+      color: #f1c40f;
+    }
+    .copyright {
+      grid-column: 1 / -1;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.3);
+      padding-top: 15px;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      main h1 { font-size: 2.2rem; }
+      main h2 { font-size: 1.2rem; }
+    }
+    @media (max-width: 480px) {
+      .navbar-all { flex-wrap: wrap; justify-content: center; gap: 10px; }
+      .btn { font-size: 16px; padding: 10px 20px; }
+      .box { width: 100%; }
     }
   </style>
 </head>
-
 <body>
+
   <header>
-    <h1>✦ مرحبًا بكم في موقع إرشاد الإسلام ✦</h1>
+    <h3>Islamic Knowledge Hub</h3>
+    <div class="navbar-all">
+      <a href="#Welcome">Home</a>
+      <a href="login.html">Login</a>
+      <a href="#services">Services</a>
+      <a href="Quiz Game.html">Quiz Game</a>
+      <a href="#end">About Us</a>
+    </div>
   </header>
 
-  <main>
-    <section>
-      <h2>📖 أصول الدين</h2>
-      <ol class="grid">
-        <li>
-          <h3>الفقه</h3>
-          <a href="https://www.islamweb.net/ar/fatwa/2397/" target="_blank">المذاهب الفقهية</a>
-          <ul>
-            <li><a href="https://ar.wikipedia.org/wiki/فقه_إسلامي" target="_blank">مدخل لعلم الفقه</a></li>
-            <li>بعض المشايخ:</li>
-            <ul>
-              <li>
-                <a href="https://www.al-badr.net/" target="_blank">عبد الرزاق البدر</a>
-                <img src="o.jpg" alt="عبد الرزاق البدر">
-                <a href="https://www.youtube.com/results?search_query=عبد+الرزاق+البدر" target="_blank">📺 YouTube</a>
-              </li>
-              <li>
-                <a href="https://ar.wikipedia.org/wiki/عبد_السلام_الشويعر" target="_blank">الشويعر</a>
-                <img src="images.jpg" alt="الشويعر">
-                <a href="https://www.youtube.com/@salihalfawzan" target="_blank">📺 YouTube</a>
-              </li>
-              <li>
-                <a href="https://ar.wikipedia.org/wiki/صالح_الفوزان" target="_blank">الفوزان</a>
-                <img src="images (1).jpg" alt="الفوزان">
-                <a href="https://www.youtube.com/results?search_query=الفوزان" target="_blank">📺 YouTube</a>
-              </li>
-            </ul>
-          </ul>
-        </li>
-
-        <li>
-          <h3>العقيدة</h3>
-          <a href="https://www.islamweb.net/ar/fatwa/45809/" target="_blank">مقدمة في العقيدة</a>
-          <ul>
-            <li><a href="https://www.islamweb.net/ar/fatwa/77988/" target="_blank">العقيدة الصحيحة</a></li>
-            <li>أشهر العلماء:</li>
-            <ul>
-              <li>
-                <a href="https://www.google.com/search?q=ابن+تيمية" target="_blank">ابن تيمية</a>
-                <img src="bn.jpg" alt="ابن تيمية">
-              </li>
-              <li>
-                <a href="https://www.google.com/search?q=ابن+باز" target="_blank">ابن باز</a>
-                <img src="ibn.jpg" alt="ابن باز">
-              </li>
-              <li>
-                <a href="https://www.google.com/search?q=ابن+عثيمين" target="_blank">ابن عثيمين</a>
-                <img src="téléchargement.webp" alt="ابن عثيمين">
-              </li>
-            </ul>
-          </ul>
-        </li>
-
-        <li>
-          <h3>الحديث</h3>
-          <a href="https://www.islamweb.net/ar/fatwa/177169/" target="_blank">مدخل إلى علم الحديث</a>
-          <ul>
-            <li><a href="https://ar.wikipedia.org/wiki/محمد" target="_blank">النبي محمد ﷺ</a></li>
-            <li>أئمة الحديث:</li>
-            <ul>
-              <li>
-                <a href="https://ar.wikipedia.org/wiki/محمد_بن_إسماعيل_البخاري" target="_blank">البخاري</a>
-                <img src="boooo.jpg" alt="البخاري">
-              </li>
-              <li>
-                <a href="https://mawdoo3.com/تعريف_الإمام_مسلم" target="_blank">مسلم</a>
-                <img src="mooooo.png" alt="مسلم">
-              </li>
-              <li>
-                <a href="https://www.islamweb.net/ar/library/content/60/2771/" target="_blank">النسائي</a>
-                <img src="kaaaaaa.jpg" alt="النسائي">
-              </li>
-            </ul>
-          </ul>
-        </li>
-      </ol>
-    </section>
+  <main id="Welcome">
+    <h1>Welcome to the Islamic Knowledge Hub</h1>
+    <h2>And say: "My Lord, increase me in knowledge."</h2>
+    <a href="#services" class="btn">Start Learning Now</a>
   </main>
 
-  <footer>
-    © 2025 - موقع إرشاد الإسلام | جميع الحقوق محفوظة
-  </footer>
-</body>
+  <section id="services" class="learn">
+    <h1>Main Knowledge Categories</h1>
+    <div class="boxes">
+      <div class="box">
+        <img src="o.jpg" alt="Abdul Razzaq al-Badr">
+        <h2>عبد الرزاق البدر</h2>
+        <p>عالم دين سعودي حاصل على الدكتوراه في العقيدة وله مؤلفات عديدة.</p>
+        <a href="https://www.youtube.com/results?search_query=عبد+الرزاق+البدر" target="_blank">
+          <i class='bx bxl-youtube'></i> YouTube
+        </a>
+      </div>
+      <div class="box">
+        <img src="images.jpg" alt="Al-Shuwaeir">
+        <h2>الشويعر</h2>
+        <p>عالم دين سعودي حاصل على دكتوراه في الفقه المقارن.</p>
+        <a href="https://www.youtube.com/results?search_query=الشويعر+الشيخ" target="_blank">
+          <i class='bx bxl-youtube'></i> YouTube
+        </a>
+      </div>
+      <div class="box">
+        <img src="faw.jpg" alt="Al-Fawzan">
+        <h2>الفوزان</h2>
+        <p>عضو في هيئة كبار العلماء بالسعودية وأحد أبرز علماء الفقه.</p>
+        <a href="https://www.youtube.com/@salihalfawzan" target="_blank">
+          <i class='bx bxl-youtube'></i> YouTube
+        </a>
+      </div>
+    </div>
+  </section>
 
+  <footer id="end">
+    <div>
+      <h2>Islamic Knowledge Hub</h2>
+      <p>Providing authentic Islamic knowledge to seekers worldwide.</p>
+    </div>
+    <div>
+      <h2>Quick Links</h2>
+      <a href="#Welcome">Home</a>
+      <a href="#services">Services</a>
+      <a href="#end">About Us</a>
+      <a href="Quiz Game.html">Quiz Game</a>
+      <a href="login.html">Login</a>
+    </div>
+    <div>
+      <h2>Contact Us</h2>
+      <p>📞 +213 0799711512</p>
+      <p>📧 oussamatght6@gmail.com</p>
+      <div class="icons">
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="#"><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-twitter'></i></a>
+        <a href="#"><i class='bx bxl-youtube'></i></a>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Islamic Knowledge Hub</p>
+    </div>
+  </footer>
+
+</body>
 </html>
