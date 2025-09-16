@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,17 +14,17 @@
     <div class="content">
         <header>
             <h3>Islamic Knowledge Hub</h3>
+
+            <button class="menu-toggle" id="menu-toggle">
+        <i class='bx bx-menu'></i>
+    </button>
+
             <div class="navbar-all">
-
-
-                <a href="
-                 #Welcome " class="navbar " id="home">Home</a>
-                <a href=" login.html" class="navbar " id="login">Login</a>
-
-                <a href="#services" class="navbar ">Services</a>
-                <a href=" Quiz Game.html" class="navbar ">Quiz game</a>
-                <a href=" #end" class="navbar " id="">about us</a>
-
+                <a href="#Welcome" class="navbar">Home</a>
+                <a href="login.html" class="navbar">Login</a>
+                <a href="#services" class="navbar">Services</a>
+                <a href="Quiz Game.html" class="navbar">Quiz game</a>
+                <a href="#end" class="navbar">About Us</a>
             </div>
         </header>
         <main>
@@ -383,6 +384,15 @@
         </footer>
 
         </div>
+        <script>
+            const menuToggle = document.getElementById('menu-toggle');
+            const header = document.querySelector('header');
+
+            menuToggle.addEventListener('click', () => {
+                header.classList.toggle('active');
+            });
+        </script>
+
 </body>
 
 </html>
