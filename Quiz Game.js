@@ -141,75 +141,84 @@
     }]
 
 
-    let question = document.querySelector('#questions')
-    let answers = document.querySelector('.line')
-    let nextDiv = document.querySelector('.next')
-    let nextbtn = document.querySelector('.next1')
+   const questionElement = document.getElementById("question");
+const optionsContainer = document.getElementById("options");
+const nextButton = document.getElementById("next-btn");
 
-    let questionIndex = 0;
-    let score = 0;
+let currentIndex = 0;
+let score = 0;
 
-    function startGame() {
-        questionIndex = 0;
-        score = 0;
-        nextDiv.style.display = 'none'
-        show()
+function startQuiz() {
+  currentIndex = 0;
+  score = 0;
+  nextButton.innerText = "التالي";
+  showQuestion();
+}
+
+function showQuestion() {
+  resetState();
+  let current = questions[currentIndex];
+  questionElement.innerText = `السؤال ${currentIndex + 1}: ${current.question}`;
+
+  current.answers.forEach((ans, idx) => {
+    const optionDiv = document.createElement("div");
+    optionDiv.innerText = ans.text;
+    optionDiv.classList.add("option");
+    if (ans.correct) {
+      optionDiv.dataset.correct = "true";
     }
+    optionDiv.addEventListener("click", selectOption);
+    optionsContainer.appendChild(optionDiv);
+  });
+}
 
+function resetState() {
+  nextButton.style.display = "none";
+  optionsContainer.innerHTML = "";
+}
 
+function selectOption(event) {
+  const selected = event.target;
+  const correct = selected.dataset.correct === "true";
 
-
-    function show() {
-        let current = questions[questionIndex];
-        let questionNumber = questionIndex + 1;
-        question.innerText = questionNumber + ". " + current.question;
-        answers.innerHTML = "";
-
-        current.answers.forEach(answer => {
-            const parent = document.createElement('p');
-            parent.innerText = answer.text;
-            parent.classList.add('btn', 'answer');
-            answers.appendChild(parent);
-
-            parent.addEventListener('click', handleAnswerClick);
-        });
-
-        const allAnswers = document.querySelectorAll('.answer');
-        allAnswers.forEach(btn => btn.style.pointerEvents = 'auto');
+  Array.from(optionsContainer.children).forEach(option => {
+    option.classList.add("disabled");
+    if (option.dataset.correct === "true") {
+      option.classList.add("correct");
+    } else {
+      option.classList.add("wrong");
     }
+  });
 
-    function handleAnswerClick(event) {
-        const allAnswers = document.querySelectorAll('.answer');
-        allAnswers.forEach(btn => btn.style.pointerEvents = 'none');
+  if (correct) {
+    score++;
+    selected.classList.add("correct");
+  } else {
+    selected.classList.add("wrong");
+  }
 
-        if (event.target.classList.contains('answer')) {
-            const selectedAnswer = questions[questionIndex].answers.find(answer => answer.text === event.target.innerText);
-            if (selectedAnswer.correct) {
-                event.target.style.backgroundColor = 'green';
-                score++;
-            } else {
-                event.target.style.backgroundColor = 'red';
-            }
-        }
+  nextButton.style.display = "inline-block";
+}
 
-        nextDiv.style.display = 'block';
-    }
+nextButton.addEventListener("click", () => {
+  currentIndex++;
+  if (currentIndex < questions.length) {
+    showQuestion();
+  } else {
+    showResult();
+  }
+});
 
-    nextbtn.addEventListener('click', () => {
-        questionIndex++;
-        if (questionIndex < questions.length) {
-            show();
-            nextDiv.style.display = 'none';
-        } else {
-            showResult();
-            nextDiv.style.display = 'none';
-        }
-    });
+function showResult() {
+  resetState();
+  questionElement.innerText = `انتهى الاختبار! درجتك: ${score} / ${questions.length}`;
+  nextButton.innerText = "إعادة المحاولة";
+  nextButton.style.display = "inline-block";
+  nextButton.addEventListener("click", () => {
+    startQuiz();
+  }, { once: true });
+}
 
-    function showResult() {
-        question.innerText = "تم الانتهاء من الاختبار!";
-        answers.innerHTML = `درجتك: ${score} من ${questions.length}`;
-
-    }
+startQuiz();
 
     startGame();
