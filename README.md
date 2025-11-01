@@ -44,7 +44,7 @@ It includes:
 |-------------|----------|
 | **HTML5** | Page structure & content |
 | **CSS3** | Styling, animations, and responsiveness |
-| **JavaScript (ES6)** | Logic for quiz game, theme toggle, and interactivity |
+| **JavaScript (ES6)/ type script** | Logic for quiz game, theme toggle, and interactivity |
 | **LocalStorage** | Saves user theme and quiz progress |
 
 ---
