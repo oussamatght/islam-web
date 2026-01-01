@@ -1,5 +1,5 @@
 # 🌙 Islamic Knowledge Hub  
-A modern, responsive Islamic web platform built with **HTML, CSS, and JavaScript and typescript**, designed to help users learn, test, and explore Islamic knowledge in an elegant and interactive way.
+A modern, responsive Islamic web platform built with **HTML, CSS, and JavaScript and typescript**, designed to help users learn, test, and explore Islamic knowledge in an elegant and interactive way
 🌐 Live Demo
 
 👉 https://islam-webb.onrender.com/
