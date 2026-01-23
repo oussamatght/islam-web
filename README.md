@@ -11,7 +11,6 @@ It includes:
 - 🧠 **Interactive Quiz Game** to test your knowledge of Islamic concepts  
 - 📚 **Educational Sections** on topics like faith, prayer, and the Qur’an  
 - 💡 **Dark & Light Mode Toggle** for a modern, comfortable viewing experience  
-- 🎨 **Smooth UI animations** and transitions for a professional design  
 
 ---
 
